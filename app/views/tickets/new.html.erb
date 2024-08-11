@@ -1,0 +1,17 @@
+<h1>Purchase Ticket for <%= @event.name %></h1>
+
+<%= form_with model: [@event, @ticket] do |form| %>
+  <div>
+    <%= form.label :seat_number %>
+    <%= form.text_field :seat_number %>
+  </div>
+
+  <div>
+    <%= form.label :price %>
+    <%= form.number_field :price, step: 0.01 %>
+  </div>
+
+  <div>
+    <%= form.submit 'Purchase' %>
+  </div>
+<% end %>

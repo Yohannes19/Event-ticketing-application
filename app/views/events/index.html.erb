@@ -1,0 +1,13 @@
+<h1>Events</h1>
+
+<% if user_signed_in? && current_user.events.any? %>
+  <%= link_to 'Create Event', new_event_path %>
+<% end %>
+
+<ul>
+  <% @events.each do |event| %>
+    <li>
+      <%= link_to event.name, event %> - <%= event.date.strftime("%B %d, %Y %H:%M") %> at <%= event.location %>
+    </li>
+  <% end %>
+</ul>
