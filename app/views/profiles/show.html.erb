@@ -1,10 +1,44 @@
-<!-- app/views/profiles/show.html.erb -->
+<div class="container mt-4">
+  <h1 class="text-center">My Profile</h1>
 
-<h1>Profile</h1>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+  <h3>User Details</h3>
+  <div class="row">
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title"><%= @user.email%></h5>
+            <p class="card-text"><%= @user.role %></p>
+          </div>
+        </div>
+      </div>
+   
+  </div>
+  <h3>Organized Events</h3>
+  <div class="row">
+    <% @organized_events.each do |event| %>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title"><%= link_to event.name, event %></h5>
+            <p class="card-text"><%= event.date.strftime("%B %d, %Y") %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 
-<%= link_to 'Edit Profile', edit_profile_path %>
+  <h3>Purchased Tickets</h3>
+  <div class="row">
+    <% @tickets.each do |ticket| %>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title"><%= link_to ticket.event.name, ticket.event %></h5>
+            <p class="card-text">Seat: <%= ticket.seat_number %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

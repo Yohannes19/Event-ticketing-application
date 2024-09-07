@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  before_validation :set_default_role, on: :create
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
   # Custom validations
@@ -8,8 +8,17 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true, on: :create
 
-  enum role: {user: 0, admin: 1}
+  enum role: {attendee: 0, organizer:1, admin: 2}
 
-  has_many :events, foreign_key: 'organizer_id'
+  has_many :organized_events, class_name: 'Event',foreign_key: 'organizer_id'
   has_many :tickets       
+  has_many :attended_events, through: :tickets, source: :event
+
+  validates :role, presence: true, inclusion: { in: %w(admin organizer attendee) }
+
+  private
+  
+  def set_default_role
+    self.role ||= 'attendee'
+  end
 end

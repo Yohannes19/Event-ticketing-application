@@ -1,0 +1,32 @@
+<div class="container mt-5">
+  <h1 class="text-center">New Events</h1>
+  <h1><%= action_name.capitalize %> Event</h1>
+
+<%= form_with model: @event do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div>
+    <%= form.label :location %>
+    <%= form.text_field :location %>
+  </div>
+
+  <div>
+    <%= form.label :date %>
+    <%= form.datetime_select :date %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+
+
+</div>

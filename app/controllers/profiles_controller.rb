@@ -3,6 +3,8 @@ class ProfilesController < ApplicationController
 
   def show
     @user = current_user
+    @organized_events = @user.organized_events
+    @tickets = @user.tickets.includes(:event)
   end
 
   def edit

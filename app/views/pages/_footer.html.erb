@@ -1,0 +1,39 @@
+<footer class="bg-light text-dark py-1 mt-auto">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <p class="text-muted justify-content-center mb-3">&copy; <%= Time.now.year %> Event Ticketing System</p>
+      </div>
+      <div class="col-md-5">
+        <ul class="list-unstyled d-flex justify-content-center mb-3">
+          <li class="nav-item">
+            <%= link_to "About Us", root_path, class: "nav-link text-dark" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Privacy", events_path, class: "nav-link text-dark" %>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-3 text-md-end text-center">
+        <ul class="list-unstyled d-flex justify-content-md-end justify-content-center mb-3">
+          <li class="ms-3">
+            <%= link_to "#", target: "_blank" do %>
+              <%= image_tag("facebook_icon.png", alt: "Facebook", class: "img-fluid") %>
+            <% end %>
+          </li>
+          <li class="ms-3">
+            <%= link_to "#", target: "_blank" do %>
+              <%= image_tag("twitter-icon.png", alt: "Twitter", class: "img-fluid") %>
+            <% end %>
+          </li>
+          <li class="ms-3">
+            <%= link_to "#", target: "_blank" do %>
+              <%= image_tag("instagram-icon.png", alt: "Instagram", class: "img-fluid") %>
+            <% end %>
+          </li>
+        </ul>
+        
+      </div>
+    </div>
+  </div>
+</footer>

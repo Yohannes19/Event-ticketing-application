@@ -8,17 +8,17 @@ class EventsController < ApplicationController
   end
 
   def show
-    
+    @events
   end
 
   def new
-    @event = current_user.events.build
+    @event = current_user.organized_events.build
   end
 
   def create
-    @event = current_user.events.build(event_params)
+    @event = current_user.organized_events.build(event_params)
     if @event.save
-      redirect_to @event, notice: "Event "
+      redirect_to @event, notice: "Event was successfully created "
       else
         render "new"
     end

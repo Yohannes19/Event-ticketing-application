@@ -69,4 +69,6 @@ gem 'devise'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'client_side_validations'
 gem 'pundit'
+gem 'rqrcode'
+
 
